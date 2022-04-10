@@ -16,9 +16,9 @@ class Supplier extends Migration
         Schema::create('Supplier', function (Blueprint $table) {
             $table->id();
             $table->string('kategori_supplier');
-            $table->integer('stok_besi');
-            $table->integer('stok_kabel');
-            $table->integer('stok_lem');
+            $table->integer('stok_mesin_jahit');
+            $table->integer('stok_mesin_pancing');
+            $table->integer('stok_mesin_kayu');
             $table->timestamps();
          });
     }

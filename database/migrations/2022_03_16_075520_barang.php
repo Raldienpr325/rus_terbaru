@@ -15,12 +15,12 @@ class Barang extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
            $table->id();
-           $table->string('Nama_barang');
+           $table->enum('Nama_barang',['mesin_jahit','mesin_pancing','mesin_kayu'])->default('mesin_kayu');
            $table->integer('jumlah');
            $table->integer('harga_satuan');
-           $table->string('kategori');
+           $table->enum('kategori',['barang_berat','barang_ringan'])->default('barang_berat');
            $table->string('gambar');
-           $table->string('Lokasi_penyimpanan');
+           $table->enum('Lokasi_penyimpanan',['gudang_1','gudang_2'])->default('gudang_1');
            $table->timestamps();
         });
     }

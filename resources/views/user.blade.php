@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('dashboard-1')
+@section('content')
     <style>
         .aligncenter {
             text-align: center;

@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('checkout')
+@section('content')
     <div class="content">
         <div class="card-body">
             <table class="table table-bordered">

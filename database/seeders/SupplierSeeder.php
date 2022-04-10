@@ -16,23 +16,24 @@ class SupplierSeeder extends Seeder
      
         
       Supplier::create([
-        'kategori_supplier' => 'supplier_3',
-        'stok_besi' => 100,
-        'stok_kabel' => 100,
-        'stok_lem' => 100,   
+        'kategori_supplier' => 'supplier_1',
+        'stok_mesin_jahit' => 100,
+        'stok_mesin_pancing' => 100,
+        'stok_mesin_kayu' => 100,   
       ]);
       Supplier::create([
         'kategori_supplier' => 'supplier_2',
-        'stok_besi' => 100,
-        'stok_kabel' => 100,
-        'stok_lem' => 100,   
+        'stok_mesin_jahit' => 100,
+        'stok_mesin_pancing' => 100,
+        'stok_mesin_kayu' => 100,   
       ]);
       Supplier::create([
-        'kategori_supplier' => 'supplier_1',
-        'stok_besi' => 1000,
-        'stok_kabel' => 100,
-        'stok_lem' => 100,   
+        'kategori_supplier' => 'supplier_3',
+        'stok_mesin_jahit' => 100,
+        'stok_mesin_pancing' => 100,
+        'stok_mesin_kayu' => 100,   
       ]);
+      
 
     }
 }

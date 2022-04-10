@@ -1,5 +1,5 @@
 @extends('home')
-@section('list-inventory')
+@section('content')
     <div class="wrapper" style="padding: 20px">
         <h2 class="text-center">List Inventory</h2>
         <p class="text-center" style="font-size: 18px; color:blue;">Berikut Merupakan Inventory Anda</p>

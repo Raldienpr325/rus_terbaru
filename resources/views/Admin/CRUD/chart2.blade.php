@@ -17,7 +17,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Pengumpulan data berdasarkan Jumlah Stok'
+                text: 'Grafik Pembelian'
             },
             xAxis: {
                 categories: {!! json_encode($categories) !!},

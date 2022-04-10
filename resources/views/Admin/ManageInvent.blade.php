@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('ManageInvent')
+@section('content')
     <div class="content">
         <div class="card-body">
             <a href="{{ url('TambahInvent') }}" class="btn btn-sm btn-success"

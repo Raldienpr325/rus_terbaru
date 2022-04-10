@@ -29,10 +29,11 @@ class UserController extends Controller
         $databarang=barang::findorfail($id);
         $datanama = Auth::user()->name;
         $diambil = $request['jumlah'];
+        $ppn = 0.1 * $databarang['harga_satuan'];
         $updatedstok = $databarang['jumlah'] - $request['jumlah'];
-        $totalharga = $request['jumlah'] * $databarang->harga_satuan;
-        $ppn = $totalharga * 0.1;
+        $totalharga = $request['jumlah'] * $databarang->harga_satuan + $ppn;
         $alamat = $request['alamat'];
+
         $datainventory = [
             'Nama_user' => $datanama,
             'Nama_barang' => $databarang->Nama_barang,
@@ -44,6 +45,7 @@ class UserController extends Controller
             'alamat' => $alamat,
         ];
         $datacheckout = [
+            'Nama_pembeli' => $datanama,
             'Nama_barang' =>$databarang->Nama_barang,
             'Diambil' => $diambil,
             'harga_total' => $totalharga,

@@ -69,7 +69,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style="text-decoration: none;color:wheat">Hi
+                        <a href="#" class="d-block" style="text-decoration: none;color:wheat">
                             {{ Auth::user()->name }} </a>
                         <!--  diambil dari layouts/app.blade.php -->
                     </div>
@@ -88,15 +88,34 @@
                                 </a>
                             </li>
                             <li class="nav-item has-treeview menu-open">
-                                <a href="{{ url('grafik-inventory') }}" class="nav-link ">
+                                <a href="#" class="nav-link active">
                                     <i class="nav-icon fas fa-chart-line"></i>
                                     <p>
-                                        Grafik Inventory
+                                        Grafik
+                                        <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item has-treeview menu-open">
+                                        <a href="{{ url('grafik-inventory') }}" class="nav-link ">
+                                            <p>
+                                                Grafik Inventory
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item has-treeview menu-open">
+                                        <a href="{{ url('grafik-pembelian') }}" class="nav-link ">
+                                            <p>
+                                                Grafik Pembelian
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+
+
                             <li class="nav-item has-treeview menu-open">
-                                <a href="{{ url('grafik2-inventory') }}" class="nav-link ">
+                                <a href="{{ url('list-pembelian') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-user-alt"></i>
                                     <p>
                                         List Pembelian
@@ -107,7 +126,7 @@
                                 <a href="{{ url('list-supplier') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-user-alt"></i>
                                     <p>
-                                        Pilih Supplier
+                                        List Supplier
                                     </p>
                                 </a>
                             </li>
@@ -148,17 +167,7 @@
 
         <div class="content-wrapper">
             <section class="content">
-                @yield('dashboard-1')
-                @yield('StokPurch')
-                @yield('ManageInvent')
-                @yield('GrafikInvent')
-                @yield('hasil-diagram')
-                @yield('Edit')
-                @yield('list-inventory')
-                @yield('checkout')
-                @yield('cetakresi')
-                @yield('list-puchasing')
-                @yield('list-supplier')
+                @yield('content')
             </section>
         </div>
 

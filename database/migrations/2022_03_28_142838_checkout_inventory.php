@@ -16,10 +16,12 @@ class CheckoutInventory extends Migration
         Schema::create('checkoutInventory', function (Blueprint $table) {
             $table->id();
             $table->string('Nama_barang');
+            $table->string('Nama_pembeli');
             $table->integer('Diambil');
             $table->integer('harga_total');
             $table->string('kategori');
             $table->string('alamat');
+            $table->integer('Bahan_total')->nullable();
             $table->timestamps();
          });
     }

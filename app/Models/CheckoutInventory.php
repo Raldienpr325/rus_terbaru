@@ -11,6 +11,6 @@ class CheckoutInventory extends Model
     protected $table = 'checkoutInventory';
 
     protected $fillable = [
-        'Nama_barang' , 'Diambil' , 'harga_total' , 'kategori' ,'alamat'
+       'Nama_pembeli', 'Nama_barang' , 'Diambil' , 'harga_total' , 'kategori' ,'alamat', 
     ];
 }

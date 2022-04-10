@@ -10,5 +10,5 @@ class Supplier extends Model
     use HasFactory;
     protected $table = 'Supplier';
     protected $fillable = [
-        'kategori_supplier', 'stok_besi', 'stok_kabel' ,'stok_lem'];
+        'kategori_supplier', 'stok_mesin_pancing', 'stok_mesin_kayu' ,'stok_mesin_jahit'];
 }
