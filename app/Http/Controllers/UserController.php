@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\barang;
 use App\Models\inventory;
 use Illuminate\Http\Request;
@@ -10,26 +11,35 @@ use App\Models\CheckoutInventory;
 
 class UserController extends Controller
 {
-    public function index(){
-        $databarang=barang::all();
-        return view('User.list',compact('databarang'));
+    public function index()
+    {
+        $dtKategori = barang::pluck('kategori');
+        dump($dtKategori);
+        $databarang = barang::all();
+        return view('User.list', compact(
+            ['databarang', 'dtKategori']
+        ));
     }
 
-    public function listpurchasing(){
+    public function listpurchasing()
+    {
         $datapurchasing = barang::all();
         return view('User.purchasing');
     }
 
-    public function checkout($id){
-        $databarang=barang::findorfail($id);
-        return view('User.checkout',compact('databarang'));
+    public function checkout($id)
+    {
+        $databarang = barang::findorfail($id);
+        return view('User.checkout', compact('databarang'));
     }
 
-    public function cetakresi(Request $request,$id){
-        $databarang=barang::findorfail($id);
+    public function cetakresi(Request $request, $id)
+    {
+
+        $databarang = barang::findorfail($id);
         $datanama = Auth::user()->name;
         $diambil = $request['jumlah'];
-        $ppn = 0.1 * $databarang['harga_satuan'];
+        $ppn = 0.15 * $databarang['harga_satuan'];
         $updatedstok = $databarang['jumlah'] - $request['jumlah'];
         $totalharga = $request['jumlah'] * $databarang->harga_satuan + $ppn;
         $alamat = $request['alamat'];
@@ -46,23 +56,32 @@ class UserController extends Controller
         ];
         $datacheckout = [
             'Nama_pembeli' => $datanama,
-            'Nama_barang' =>$databarang->Nama_barang,
+            'Nama_barang' => $databarang->Nama_barang,
             'Diambil' => $diambil,
             'harga_total' => $totalharga,
             'kategori' => $databarang->kategori,
             'alamat' => $alamat,
         ];
-        if($updatedstok < 0 ){
-            return redirect()->back()->withErrors('asd');
-        }else{
+        if ($updatedstok < 0) {
+            return redirect()->back();
+        } else {
             inventory::create($datainventory);
             CheckoutInventory::create($datacheckout);
             DB::table('barang')->where('id', $id)->update([
-            'jumlah' => $updatedstok,
-        ]);
+                'jumlah' => $updatedstok,
+            ]);
 
-        return view('User.cetakresi' , compact('datainventory'));
+            return view('User.cetakresi', compact('datainventory'));
         }
-        
+    }
+    public function inventory()
+    {
+        $keranjang = CheckoutInventory::where('nama_pembeli', Auth::user()->name)->get();
+        $namauser = Auth::user()->name;
+        if (Auth::user()->name == $keranjang) {
+            return redirect()->back();
+        } else {
+            return view('user.purchasing', compact('keranjang'));
+        }
     }
 }

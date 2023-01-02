@@ -19,19 +19,10 @@
                         class="form-control @error('harga_satuan') is-invalid @enderror" placeholder="harga_satuan" required
                         autofocus value="{{ old('harga_satuan') }}">
                 </div>
-                <div class="col-md-12">
-                    <div class="mb-3">
-                        <label class="form-label">Nama_barang</label>
-                        <select class="form-select" id="Nama_barang" name="Nama_barang" required>
-                            <option selected disabled value="">Nama barang</option>
-                            <option value="mesin_jahit">mesin_jahit</option>
-                            <option value="mesin_pancing">mesin_kayu</option>
-                            <option value="mesin_kayu">mesin_pancing</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Field is required !
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <input type="text" id="Nama_barang" name="Nama_barang"
+                        class="form-control @error('Nama_barang') is-invalid @enderror" placeholder="Nama_barang" required
+                        autofocus value="{{ old('Nama_barang') }}">
                 </div>
                 <div class="col-md-12">
                     <div class="mb-3">
@@ -40,6 +31,7 @@
                             <option selected disabled value="">Pilih Kategori</option>
                             <option value="barang_berat">Barang berat</option>
                             <option value="barang_ringan">Barang ringan</option>
+                            <option value="123">ini baru</option>
                         </select>
                         <div class="invalid-feedback">
                             Field is required !

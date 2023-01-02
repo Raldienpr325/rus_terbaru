@@ -5,27 +5,20 @@
             <div class="card-body">
                 <form action="{{ url('update', $barang->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label class="form-label">Nama_barang</label>
-                            <select class="form-select" id="Nama_barang" name="Nama_barang" required>
-                                <option selected disabled value="">Nama barang</option>
-                                <option value="mesin_jahit">mesin_jahit</option>
-                                <option value="mesin_pancing">mesin_kayu</option>
-                                <option value="mesin_kayu">mesin_pancing</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Field is required !
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Jumlah</label>
+                        <input type="text" id="Nama_barang" name="Nama_barang"
+                            class="form-control @error('Nama_barang') is-invalid @enderror" placeholder="Nama_barang"
+                            required autofocus value="{{ $barang->Nama_barang }}">
                     </div>
                     <div class="form-group">
+                        <label class="form-label">Jumlah</label>
                         <input type="text" id="jumlah" name="jumlah"
                             class="form-control @error('jumlah') is-invalid @enderror" placeholder="jumlah" required
                             autofocus value="{{ $barang->jumlah }}">
                     </div>
                     <div class="form-group">
+                        <label class="form-label">Harga Satuan</label>
                         <input type="text" id="harga_satuan" name="harga_satuan"
                             class="form-control @error('harga_satuan') is-invalid @enderror" placeholder="harga_satuan"
                             required autofocus value="{{ $barang->harga_satuan }}">

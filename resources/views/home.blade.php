@@ -58,9 +58,6 @@
                 </li>
             </ul>
         </nav>
-
-
-
         <aside class="main-sidebar elevation-4" style="background-color: #071828">
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -87,23 +84,23 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item has-treeview menu-open">
-                                <a href="#" class="nav-link active">
-                                    <i class="nav-icon fas fa-chart-line"></i>
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie mr-1"></i>
                                     <p>
                                         Grafik
-                                        <i class="right fas fa-angle-left"></i>
+                                        <i class="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item has-treeview menu-open">
+                                    <li class="nav-item  ">
                                         <a href="{{ url('grafik-inventory') }}" class="nav-link ">
                                             <p>
                                                 Grafik Inventory
                                             </p>
                                         </a>
                                     </li>
-                                    <li class="nav-item has-treeview menu-open">
+                                    <li class="nav-item  ">
                                         <a href="{{ url('grafik-pembelian') }}" class="nav-link ">
                                             <p>
                                                 Grafik Pembelian
@@ -112,8 +109,6 @@
                                     </li>
                                 </ul>
                             </li>
-
-
                             <li class="nav-item has-treeview menu-open">
                                 <a href="{{ url('list-pembelian') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-user-alt"></i>

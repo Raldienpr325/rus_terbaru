@@ -15,7 +15,7 @@ class Barang extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
            $table->id();
-           $table->enum('Nama_barang',['mesin_jahit','mesin_pancing','mesin_kayu'])->default('mesin_kayu');
+           $table->string('Nama_barang');
            $table->integer('jumlah');
            $table->integer('harga_satuan');
            $table->enum('kategori',['barang_berat','barang_ringan'])->default('barang_berat');

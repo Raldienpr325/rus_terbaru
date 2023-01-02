@@ -3,6 +3,14 @@
     <div class="wrapper" style="padding: 20px">
         <h2 class="text-center">List Inventory</h2>
         <p class="text-center" style="font-size: 18px; color:blue;">Berikut Merupakan Inventory Anda</p>
+        <p>List kategori yang tersedia :</p>
+
+        @foreach ($dtKategori as $item)
+            <div class="btn-group mb-3" role="group" aria-label="Basic mixed styles example">
+                <a href="#" class="btn btn-secondary">{{ $item }}</a>
+            </div>
+        @endforeach
+
         <div class="row">
             @foreach ($databarang as $item)
                 <div class="col-lg-4 col-6 col-sm-6">

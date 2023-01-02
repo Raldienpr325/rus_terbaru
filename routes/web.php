@@ -16,12 +16,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 
 Route::group(['middleware' => ['role:admin']], function(){
     Route::get('/mng-inventory', [App\Http\Controllers\CrudController::class, 'mnginventory']);
@@ -36,10 +32,10 @@ Route::group(['middleware' => ['role:admin']], function(){
     Route::get('/list-supplier', [App\Http\Controllers\CrudController::class, 'listsupplier']);
     Route::post('/done/{id}', [App\Http\Controllers\CrudController::class, 'done']);
 });
-   
+
 Route::group(['middleware' => ['role:user']], function(){
     Route::get('/list-inventory', [App\Http\Controllers\UserController::class, 'index']);
-    Route::get('/list-purchasing', [App\Http\Controllers\UserController::class, 'listpurchasing']);
+    Route::get('/list-purchasing', [App\Http\Controllers\UserController::class, 'inventory']);
     Route::get('/checkout/{id}', [App\Http\Controllers\UserController::class, 'checkout']);
     Route::post('/cetak-resi/{id}', [App\Http\Controllers\UserController::class, 'cetakresi']);
 });

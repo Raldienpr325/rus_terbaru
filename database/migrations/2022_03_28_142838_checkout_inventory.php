@@ -21,6 +21,7 @@ class CheckoutInventory extends Migration
             $table->integer('harga_total');
             $table->string('kategori');
             $table->string('alamat');
+            $table->string('status')->nullable();
             $table->integer('Bahan_total')->nullable();
             $table->timestamps();
          });

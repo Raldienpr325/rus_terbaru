@@ -16,6 +16,5 @@
         <p class="text-center" style="font-weight: 500;margin-top:-10px">PT. Bimbim Malang</p>
         <p class="text-center" style="margin-top: -15px">Universitas Brawijaya Malang</p>
         </p>
-
     </div>
 @endsection

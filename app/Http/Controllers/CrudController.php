@@ -7,7 +7,7 @@ use App\Models\barang;
 use App\Models\CheckoutInventory;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 
 class CrudController extends Controller
 {
@@ -50,26 +50,58 @@ class CrudController extends Controller
     }
 
     public function tambahinvent(){
-        
         return view('Admin.CRUD.TambahInvent');
     }
 
-    public function done(Request $request,$id){
-        $testing = CheckoutInventory::findorfail($id);
-        $stok_lama = $testing['Diambil']; //bakalan ambil 'DIAMBIL' sesuai ID
-        $stok_supplier = $request['kategori_supplier'];
-        $stok_baru = $stok_supplier - $stok_lama;
-        dd($stok_baru);
-        if($stok_baru < 0 ){
-            return redirect()->back();
-        }else{
-            DB::table('Supplier')
-            ->where('id', $id)
-            ->update(['stok_mesin_jahit', $stok_baru]);
-        return view('Admin.done');
+    public function done(Request $request, $id){
+        $status = 'confirmed';
+        $Diambil = $request['Diambil'];
+        if($request['supplier'] == 'supplier_1'){
+            $id_supplier = '1';
         }
+        if($request['supplier'] == 'supplier_2'){
+            $id_supplier = '2';
+        }
+        if($request['supplier'] == 'supplier_3'){
+            $id_supplier = '3';
+        }
+        $supplier = Supplier::findorfail($id_supplier);
+        if($request['Nama_barang'] == 'mesin_pancing'){
+            $new_stok_pancing = $supplier['stok_mesin_pancing'] - $Diambil;
+            if($new_stok_pancing < 0){
+                return redirect()->back();
+            }else{
+                DB::table('Supplier')
+                ->where('kategori_supplier', $request['supplier'])
+                ->update(['stok_mesin_pancing' => $new_stok_pancing]);
+            }
+        }
+        if($request['Nama_barang'] == 'mesin_kayu'){
+            $new_stok_kayu = $supplier['stok_mesin_kayu'] - $Diambil;
+            if($new_stok_kayu < 0){
+                return redirect()->back();
+            }else{
+                DB::table('Supplier')
+                ->where('kategori_supplier', $request['supplier'])
+                ->update(['stok_mesin_kayu' => $new_stok_kayu]);
+            }
+        }
+        if($request['Nama_barang'] == 'mesin_jahit'){
+            $new_stok_jahit = $supplier['stok_mesin_jahit'] - $Diambil;
+            if($new_stok_jahit < 0 ){
+                return redirect()->back();
+            }else{
+                DB::table('Supplier')
+                ->where('kategori_supplier', $request['supplier'])
+                ->update(['stok_mesin_jahit' => $new_stok_jahit]);
+            }
+        }
+        DB::table('checkoutInventory')
+        ->where('id',$id)->update(['status'=> $status]);
+        return view('Admin.done');
     }
-
+ 
+  
     
     public function simpanInvent(Request $request){
         $validate = $request->validate([
@@ -97,6 +129,7 @@ class CrudController extends Controller
         $barang->update($request->all());
         return redirect('mng-inventory');
     }
+    
     public function destroy($id)
     {
         $barang=barang::findorfail($id);
